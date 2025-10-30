@@ -75,3 +75,19 @@ display(sum_(t in V))delta_(s t) (v)&=display(sum_(t in V))display(sum_(z:v in P
 delta_(s+) (v)&= display(sum_(z:v in P_s (z))) sigma(s,v)/sigma(s,z) (1+delta_(s+) (z)), $
 证毕.
 
+= 4.3
+
+== 4.3.a
+
+$ &quad (sum_(v in V') tau_3 (v) "cl"(v))/(sum_(v in V') tau_3 (v))
+\
+&=(sum_(v in V') tau_triangle (v))/(sum_(v in V') tau_3 (v))
+\
+&=(3 tau_triangle (G))/(tau_3 (G)) $
+
+== 4.3.b
+
+考虑一类由n个三角形组成的图$G_n$, 那些三角形共享同一个顶点, 但是剩余的两个顶点以及边不和其他三角形重合, 也就是说图里有2n+1个顶点和n个三角形, 中心顶点度为2n, 其余顶点度为2, 因此可以计算出外围顶点$"cl"(v)=1$, 中心顶点$"cl"(v)=1/(2n-1)$, 
+$ "cl"(G_n)=(2n+1/(2n-1))/(2n+1)->1 $
+$ "cl"_"T" (G_n)=(3n)/(binom(2n,2)+2n binom(2,2))->0 $
+
