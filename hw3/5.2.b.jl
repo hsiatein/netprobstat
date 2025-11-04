@@ -18,7 +18,7 @@ function on_unique_shortest_path(wg::SimpleWeightedGraph{Int,Float64},
                                  i::Int, j::Int, k::Int)
     i == j && return false
     (k == i || k == j) && return false
-    sp = dijkstra_shortest_paths(wg, i)     # 默认读取边权
+    sp = dijkstra_shortest_paths(wg, i)
     parent = sp.parents
     v = j
     while v != i && v != 0
