@@ -55,3 +55,42 @@ $ pi_(i j)&=binom(N_V-3,n-2)/binom(N_V-1,n)
   [3], [8], [0.0813], [33], [32.2],
   [23], [3], [0.0049], [2], [2.2],
 )
+
+= 5.3
+$ EE(N)=EE(sum_(i)Z_i)=sum_(i) EE(Z_i)=N_v p_0 $
+
+$ EE(M_1)&=EE(sum_(i eq.not j)Z_i Z_j A_(i j))
+\
+&=sum_(i eq.not j) EE(Z_i Z_j)A_(i j)
+\
+&=sum_(i eq.not j) EE(Z_i)EE(Z_j)A_(i j)
+\
+&=p_0^2 sum_(i eq.not j) A_(i j)
+\
+&=(N_e-N_v)p_0^2 $
+
+$ EE(M_2)&=EE(sum_(i eq.not j)Z_i (1-Z_j) A_(i j))
+\
+&=sum_(i eq.not j) EE(Z_i (1-Z_j))A_(i j)
+\
+&=sum_(i eq.not j) EE(Z_i)EE(1-Z_j)A_(i j)
+\
+&=p_0(1-p_0) sum_(i eq.not j) A_(i j)
+\
+&=(N_e-N_v)p_0(1-p_0) $
+#set math.equation(numbering: "(1)")
+$ n=N_v p_0 $
+
+$ m_1=(N_e-N_v)p_0^2 $
+
+$ m_2=(N_e-N_v)p_0(1-p_0) $
+
+$ "(1)" -> N_v=n/p_0 $
+
+$ "(2)+(3)" -> m_1+m_2=(N_e-N_v)p_0 $
+
+$ "(5)/(2)" -> (m_1+m_2)/m_1=1/p_0 $
+
+#set math.equation(numbering: none)
+
+$ "(6)代入(1)" -> N_v=n (m_1+m_2)/m_1 $
