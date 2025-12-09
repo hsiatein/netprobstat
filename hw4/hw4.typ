@@ -55,3 +55,18 @@ $ f_(d)&=(d-1)/(d+2) f_(d-1)\
 &=(6)/((d+2)(d+1)d) f_1\
 &=(2 m (m+1))/((d+2)(d+1)d)=f_(d,m) $
 
+= 6.3
+
+== 6.3.a
+
+程序见6.3.a.jl, 结果可视化如下, 可以发现当度越小时拟合效果越好
+#image("degree_distribution.png",height: 40%)
+
+== 6.3.b
+
+程序见6.3.b.jl, 结果对比 (理论值 Gamma ≈ 3.0):
+1. Hill Estimator: Gamma ≈ 3.0325,
+
+2. Naive Regression: Gamma ≈ 2.1041,
+
+可以发现Hill估计的表现要更好一些.
