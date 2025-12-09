@@ -70,3 +70,15 @@ $ f_(d)&=(d-1)/(d+2) f_(d-1)\
 2. Naive Regression: Gamma ≈ 2.1041,
 
 可以发现Hill估计的表现要更好一些.
+
+= 6.4
+
+== 6.4.a
+
+设$bold(y)^+ = [Y_(i j)=1,Y_((-i j))=y_((-i j))], bold(y)^- = [Y_(i j)=0,Y_((-i j))=y_((-i j))]$
+那么
+$ &log((P_theta (Y_(i j)=1|Y_((-i j))=y_((-i j))))/(P_theta (Y_(i j)=0|Y_((-i j))=y_((-i j)))))\
+&=log((P_theta (bold(y)^+))/(P_theta (bold(y)^-)))\
+&=log((1/kappa exp(theta^TT g(bold(y)^+)))/(1/kappa exp(theta^TT g(bold(y)^-))))\
+&=theta^TT (g(bold(y)^+)-g(bold(y)^-))\
+&=theta^TT Delta_(i j)(y) $
