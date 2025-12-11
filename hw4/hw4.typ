@@ -82,3 +82,17 @@ $ &log((P_theta (Y_(i j)=1|Y_((-i j))=y_((-i j))))/(P_theta (Y_(i j)=0|Y_((-i j)
 &=log((1/kappa exp(theta^TT g(bold(y)^+)))/(1/kappa exp(theta^TT g(bold(y)^-))))\
 &=theta^TT (g(bold(y)^+)-g(bold(y)^-))\
 &=theta^TT Delta_(i j)(y) $
+
+
+== 6.4.b
+
+首先, 对于$S_1(y)$, 增加一条边显然会使得边数增加1, 因此
+$ Delta_(i j) S_1 (y)=1. $ 
+
+然后, 对于$S_2(y)$, 增加一条边会使得以i和j为端点的二星数量分别增加$y_(i+)-y_(i j) $和$y_(j+)-y_(i j)$, 也就是除去$i j$后各自度的数量, 因此
+$ Delta_(i j) S_2 (y)=y_(i+)+y_(j+)-2 y_(i j). $
+
+最后, 对于$T(y)$, 考虑$y_(i k)y_(j k)$, 当此式为1时, 说明$i k$和$j k$有边, 因此加上$i j$后三角形$+1$. $k$遍历整个图就是三角形的总增加量, 因此
+$ Delta_(i j) T (y)=sum_(k!=i,j)y_(i k)y_(j k). $
+
+由此可得目标式成立.
