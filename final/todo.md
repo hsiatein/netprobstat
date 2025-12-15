@@ -1,4 +1,4 @@
-如下是要求，以higgs-mention_network.edgelist为数据，使用python+netwokx来实现，完成Stage 2的网络分析，并且将需要的那些分析结果算出来后，写进report.tex里
+如下是要求，以higgs-mention_network.edgelist为数据，使用python+网络分析模块（尽可能快）来实现，完成Stage 2的网络分析，并且将需要的那些分析结果算出来后，写进report.tex里
 
 Math6116P Course Project-Network Data Analysis
 

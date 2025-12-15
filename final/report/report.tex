@@ -62,4 +62,123 @@
 \begin{document}
     \maketitle
     \newpage
+
+    \section{网络分析结果}
+    \subsection{图的基本统计信息}
+    \begin{itemize}
+        \item 节点数量: 116408
+        \item 边数量: 150818
+        \item 平均度: 2.59
+        \item 图是否连通: 否
+        \item 连通分量的数量: 110704
+        \item 最大连通分量的大小: 1801 节点
+    \end{itemize}
+
+    \subsection{中心性分析}
+    我们计算了网络的总度中心性 (Total Degree Centrality)、介数中心性 (Betweenness Centrality)、紧密中心性 (Closeness Centrality) 和特征向量中心性 (Eigenvector Centrality)。
+
+    \subsubsection{总度中心性}
+    总度中心性衡量了节点在网络中的活跃程度。以下是总度中心性最高的10个节点:
+    \begin{tabular}{|c|c|}
+        \hline
+        节点 & 总度中心性 \\
+        \hline
+        88 & 11960 \\
+        677 & 3920 \\
+        2417 & 2538 \\
+        59195 & 1604 \\
+        3998 & 1592 \\
+        7533 & 1530 \\
+        383 & 1358 \\
+        1988 & 1191 \\
+        13813 & 1067 \\
+        519 & 805 \\
+        \hline
+    \end{tabular}
+
+    \subsubsection{介数中心性}
+    介数中心性衡量了节点在网络中作为“桥梁”的重要性。由于计算量巨大，我们使用了估计值，并进行了归一化处理。以下是介数中心性最高的10个节点:
+    \begin{tabular}{|c|c|}
+        \hline
+        节点 & 介数中心性 (归一化) \\
+        \hline
+        88 & 1.0000 \\
+        64911 & 0.9629 \\
+        13808 & 0.8510 \\
+        89805 & 0.5423 \\
+        12751 & 0.5145 \\
+        110903 & 0.4473 \\
+        6940 & 0.4363 \\
+        67382 & 0.4105 \\
+        3998 & 0.3815 \\
+        35376 & 0.3550 \\
+        \hline
+    \end{tabular}
+
+    \subsubsection{紧密中心性}
+    紧密中心性衡量了节点到网络中其他所有节点的平均距离。由于原图不连通，我们在最大的连通分量上计算了紧密中心性。以下是紧密中心性最高的10个节点:
+    \begin{tabular}{|c|c|}
+        \hline
+        节点 & 紧密中心性 \\
+        \hline
+        88 & 0.4808 \\
+        3998 & 0.4060 \\
+        89805 & 0.3993 \\
+        13808 & 0.3874 \\
+        2417 & 0.3785 \\
+        5226 & 0.3743 \\
+        1276 & 0.3742 \\
+        12751 & 0.3736 \\
+        26158 & 0.3684 \\
+        6241 & 0.3671 \\
+        \hline
+    \end{tabular}
+
+    \subsubsection{特征向量中心性}
+    特征向量中心性衡量了节点连接到重要节点的程度。由于图不完全连通，此结果可能需要谨慎解释。以下是特征向量中心性最高的10个节点:
+    \begin{tabular}{|c|c|}
+        \hline
+        节点 & 特征向量中心性 \\
+        \hline
+        88 & 1.0000 \\
+        3998 & 0.5430 \\
+        13808 & 0.5284 \\
+        13813 & 0.5218 \\
+        12751 & 0.2707 \\
+        67382 & 0.2605 \\
+        5226 & 0.2366 \\
+        677 & 0.2214 \\
+        4259 & 0.2179 \\
+        64911 & 0.2177 \\
+        \hline
+    \end{tabular}
+
+    \subsection{社区检测}
+    我们使用Leiden算法进行了社区检测，以发现网络中的密集连接子结构。
+    \begin{itemize}
+        \item 检测到的社区数量: 10681
+        \item 分区的模块度: 0.8525
+    \end{itemize}
+    以下是最大的5个社区及其节点数量:
+    \begin{tabular}{|c|c|}
+        \hline
+        社区 & 节点数量 \\
+        \hline
+        0 & 10637 \\
+        1 & 6997 \\
+        2 & 4897 \\
+        3 & 4881 \\
+        4 & 4608 \\
+        \hline
+    \end{tabular}
+
+    \subsection{度分布}
+    度分布图展示了网络中具有不同度数的节点数量。
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.8\textwidth]{plots/degree_distribution.png}
+        \caption{网络度分布图 (对数-对数坐标)}
+        \label{fig:degree_distribution}
+    \end{figure}
+    \newpage
 \end{document}
