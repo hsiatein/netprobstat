@@ -8,7 +8,7 @@ import os
 script_dir = os.path.dirname(__file__)
 file_path = os.path.join(script_dir, '..', 'midterm', 'higgs-mention_network.edgelist')
 # Define output directory for plots
-output_dir = 'report/plots'
+output_dir = os.path.join(script_dir, 'report', 'plots')
 os.makedirs(output_dir, exist_ok=True)
 
 print(f"Loading graph from {file_path}...")
