@@ -1,0 +1,72 @@
+Loading graph from final/ba_model.edgelist...
+Graph loaded. Number of nodes: 116408, Number of edges: 232813
+Performing centrality analysis...
+
+Top 10 Nodes by Total Degree:
+Node 0: 5518
+Node 1: 4580
+Node 9: 1506
+Node 11: 1483
+Node 16: 1332
+Node 8: 1198
+Node 2: 909
+Node 17: 791
+Node 23: 757
+Node 54: 673
+
+Calculating Betweenness Centrality (estimated)...
+
+Top 10 Nodes by Betweenness Centrality (normalized):
+Node 16: 1.0000
+Node 17: 0.8927
+Node 292: 0.8237
+Node 1154: 0.7755
+Node 31: 0.6435
+Node 9: 0.6041
+Node 11: 0.5767
+Node 23: 0.5693
+Node 262: 0.5276
+Node 737: 0.5269
+
+Calculating Closeness Centrality (on largest connected component)...
+
+Top 10 Nodes by Closeness Centrality:
+Node 116407: nan
+
+Calculating Eigenvector Centrality...
+
+Top 10 Nodes by Eigenvector Centrality:
+Node 0: 1.0000
+Node 38794: 0.0000
+Node 38795: 0.0000
+Node 38796: 0.0000
+Node 38797: 0.0000
+Node 38798: 0.0000
+Node 38799: 0.0000
+Node 38800: 0.0000
+Node 38801: 0.0000
+Node 38802: 0.0000
+
+Performing Community Detection (Leiden method)...
+Number of communities detected: 83
+Modularity of the partition: 0.5427
+
+Top 5 Largest Communities:
+Community 0: 6104 nodes
+Community 1: 5762 nodes
+Community 2: 5384 nodes
+Community 3: 5217 nodes
+Community 4: 5057 nodes
+
+Basic Graph Statistics:
+Number of nodes: 116408
+Number of edges: 232813
+Average degree: 4.00
+Graph is connected: False
+Number of connected components: 116408
+Size of largest connected component: 1 nodes
+
+Generating degree distribution plot in /home/mugi/vscode/netprobstat/final/report/plots/degree_distribution_ba_model.edgelist.png...
+Degree distribution plot generated.
+
+Analysis Complete. Review the printed results and generated plots.

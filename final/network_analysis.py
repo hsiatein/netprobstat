@@ -4,19 +4,45 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
-# Define the path to the edgelist file
+import igraph as ig
+import leidenalg
+import numpy as np
+import matplotlib.pyplot as plt
+import os
+import sys
+
+# --- Dynamic File Path Handling ---
 script_dir = os.path.dirname(__file__)
-file_path = os.path.join(script_dir, '..', 'midterm', 'higgs-mention_network.edgelist')
-# Define output directory for plots
+default_file_path = os.path.join(script_dir, 'ba_model.edgelist')
+
+# Use command-line argument for file path if provided, otherwise use default
+if len(sys.argv) > 1:
+    file_path = sys.argv[1]
+else:
+    file_path = default_file_path
+
+# --- Output Path Configuration ---
 output_dir = os.path.join(script_dir, 'report', 'plots')
 os.makedirs(output_dir, exist_ok=True)
+# Generate a unique plot filename based on the input file
+input_filename = os.path.basename(file_path)
+plot_path = os.path.join(output_dir, f"degree_distribution_{input_filename}.png")
+
 
 print(f"Loading graph from {file_path}...")
 
-# Load the graph using igraph
-# The edgelist appears to be (source, target, weight).
-# igraph can handle this directly. Let's load it as a directed graph.
-G = ig.Graph.Read_Ncol(file_path, directed=True, weights=True)
+# Load the graph using igraph. Set weights=False to handle unweighted graphs too.
+try:
+    G = ig.Graph.Read_Ncol(file_path, directed=True, weights=False)
+except Exception as e:
+    print(f"Error loading graph: {e}")
+    print("Trying to load as a simple edgelist (no weights)...")
+    try:
+        # Fallback for files that might have weight column issues but are unweighted
+        G = ig.Graph.Read_Edgelist(file_path, directed=True)
+    except Exception as e2:
+        print(f"Failed to load graph: {e2}")
+        sys.exit(1)
 
 # The node names are integers, let's map them to strings to be safe
 G.vs["name"] = [str(v) for v in G.vs["name"]]
@@ -104,7 +130,7 @@ if not G.is_connected():
     print(f"Size of largest connected component: {largest_cc.vcount()} nodes")
 
 # --- Plotting Degree Distribution ---
-print(f"\nGenerating degree distribution plot in {output_dir}/degree_distribution.png...")
+print(f"\nGenerating degree distribution plot in {plot_path}...")
 degree_dist = G.degree_distribution()
 bins = degree_dist.bins()
 degrees_and_counts = []
@@ -120,11 +146,11 @@ counts = [item[1] for item in degrees_and_counts]
 
 plt.figure(figsize=(10, 6))
 plt.loglog(degrees, counts, 'o-')
-plt.title("Degree Distribution")
+plt.title(f"Degree Distribution for {input_filename}")
 plt.xlabel("Degree")
 plt.ylabel("Number of Nodes")
 plt.grid(True, which="both", ls="-")
-plt.savefig(f"{output_dir}/degree_distribution.png")
+plt.savefig(plot_path)
 plt.close()
 print("Degree distribution plot generated.")
 
