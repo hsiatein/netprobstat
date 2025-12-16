@@ -3,3 +3,13 @@
 **.pdf
 **.zip
 .DS_store
+**.aux
+**.fls
+**.log
+**.nav
+**.fdb_latexmk
+**.out
+**.snm
+**.synctex.gz
+**.toc
+**.xdv
