@@ -198,24 +198,81 @@
     \end{itemize}
 \end{frame}
 
+\section{与随机模型的比较}
+\begin{frame}
+    \frametitle{与BA模型的比较}
+    \begin{itemize}
+        \item \textbf{目的:} 检验简单的生成模型是否能复现真实网络的特性。
+        \item \textbf{模型:} Barabási-Albert (BA) 模型，采用“优先连接”机制。
+        \item \textbf{参数:}
+        \begin{itemize}
+            \item $N = 116,408$ (与真实网络相同)
+            \item $m=2$ (新节点连接到2个现有节点)
+        \end{itemize}
+    \end{itemize}
+    \pause
+    \begin{beamercolorbox}[sep=1em]{block body}
+    \begin{tabular}{l c c}
+        \toprule
+        \textbf{指标} & \textbf{真实网络} & \textbf{BA 模型} \\
+        \midrule
+        平均度 & 2.59 & 4.00 \\
+        最大连通分量大小 & 1801 & 1 \\
+        模块度 & 0.8525 & 0.5427 \\
+        \bottomrule
+    \end{tabular}
+    \end{beamercolorbox}
+\end{frame}
+
+\begin{frame}
+    \frametitle{度分布对比: 真实网络 vs. BA模型}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \textbf{真实网络}
+            \includegraphics[width=\textwidth]{../report/plots/degree_distribution_higgs-mention_network.edgelist.png}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \textbf{BA 模型}
+            \includegraphics[width=\textwidth]{../report/plots/degree_distribution_ba_model.edgelist.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{比较结论}
+    \begin{itemize}
+        \item \textbf{BA模型的成功之处:}
+        \begin{itemize}
+            \item 成功复现了真实网络的\textbf{无标度}特性，两者都呈现幂律度分布。
+            \item 证明\textbf{优先连接}是此类社交网络演化的基本机制。
+        \end{itemize}
+        \pause
+        \item \textbf{BA模型的局限性:}
+        \begin{itemize}
+            \item \textbf{未能形成核心社群:} 真实网络有1801个节点的核心连通分量，而BA模型是碎片化的。
+            \item \textbf{未能产生强社区结构:} 真实网络的模块度极高 (0.85)，而BA模型则低得多 (0.54)。
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
 \section{总结}
 \begin{frame}
     \frametitle{总结与发现}
     \begin{itemize}
         \item \textbf{网络类型:}
-        该网络是一个典型的\textbf{无标度 (Scale-Free)}社交网络，规模庞大但结构松散。
+        典型的\textbf{无标度}社交网络，规模庞大但结构松散。
         \pause
         \item \textbf{网络结构:}
         \begin{itemize}
-            \item 存在一个核心的“巨型连通分量”(GCC) 和大量外围小社群。
-            \item 具有高度模块化（社区化）的结构 (模块度 > 0.85)。
+            \item 存在核心“巨型连通分量”和大量外围小社群。
+            \item 具有高度模块化的社区结构 (模块度 > 0.85)。
         \end{itemize}
         \pause
         \item \textbf{关键节点:}
-        中心性分析成功识别出网络中的核心节点 (如\textbf{节点 88})，它们在信息传播和网络结构稳定中扮演着关键角色。
+        中心性分析识别出网络中的核心节点 (如\textbf{节点 88})。
         \pause
-        \item \textbf{启示:}
-        这些发现为理解在线社交网络中的信息流动、影响力构建和社群组织方式提供了有价值的见解。
+        \item \textbf{模型比较:}
+        BA模型验证了\textbf{优先连接}机制，但过于简单，无法捕捉真实网络丰富的社区结构。
     \end{itemize}
 \end{frame}
 

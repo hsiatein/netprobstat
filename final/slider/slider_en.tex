@@ -12,7 +12,7 @@
 % --- Document Information ---
 \title{Final Project}
 \subtitle{Analysis of Twitter Mention Network}
-\author{Tian Xia}
+\author{Xia Tian}
 \date{}
 
 \begin{document}
@@ -33,18 +33,19 @@
 \begin{frame}
     \frametitle{Project Introduction}
     \begin{itemize}
-        \item \textbf{Objective:} To conduct an in-depth probabilistic and statistical analysis of a real-world social network dataset.
-        \item \textbf{Dataset:} The Higgs-Mention Network, a Twitter mention network related to the Higgs boson.
+
+        \item \textbf{Dataset:} The Twitter Mention Network, a mention network related to the Higgs boson.
         \begin{itemize}
-            \item Captures the relationships between users who mention each other using the "@" symbol.
+            \item Records the relationships between users who mention each other.
             \item Forms a complex directed graph.
         \end{itemize}
         \item \textbf{Analysis Content:}
         \begin{itemize}
             \item Basic statistical properties of the network
-            \item Identification of key nodes (centrality analysis)
-            \item Discovery of community structure
-            \item Topological properties of the network (degree distribution)
+            \item Centrality analysis
+            \item Community structure
+            \item Degree distribution
+            \item Comparison with stochastic models
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -54,47 +55,40 @@
 \begin{frame}
     \frametitle{Basic Statistical Information of the Graph}
     \begin{itemize}
-        \item \textbf{Number of Nodes:} 116,408 (large-scale discussion)
-        \item \textbf{Number of Edges:} 150,818
-        \item \textbf{Average Degree:} 2.59 (the network is relatively sparse)
-        \pause
-        \item \textbf{Is the graph connected?} \textcolor{red}{No}
-        \item \textbf{Number of Connected Components:} 110,704 (a large number of independent subgraphs)
-        \pause
-        \item \textbf{Giant Connected Component (GCC):}
-        \begin{itemize}
-            \item \textbf{Size:} 1,801 nodes
-            \item \textbf{Significance:} The core communication group in the network, and the focus of subsequent analysis.
-        \end{itemize}
+        \item \textbf{Nodes:} 116,408
+        \item \textbf{Edges:} 150,818
+        \item \textbf{Average Degree:} 2.59
+        \item \textbf{Connected?} No
+        \item \textbf{Connected Components:} 110,704
+        \item \textbf{Giant Connected Component:} 1,801
     \end{itemize}
+    
     \vfill
-    \small\textit{Conclusion: A typical real-world social network—large in scale, loosely structured, consisting of a core connected component and a large number of isolated conversations.}
 \end{frame}
 
 \subsection{Centrality Analysis}
 \begin{frame}
-    \frametitle{Centrality Analysis (1/2) - Identifying Key Nodes}
+    \frametitle{Centrality Analysis}
     \begin{columns}[T]
         \begin{column}{0.5\textwidth}
-            \textbf{Degree Centrality (Activity)}
+            \textbf{Degree Centrality}
             \begin{tabular}{|c|c|}
                 \hline
                 Node & Degree \\
                 \hline
-                \rowcolor{yellow!30} \textbf{88} & \textbf{11960} \\
+                88 & 11960 \\
                 677 & 3920 \\
                 2417 & 2538 \\
                 \hline
             \end{tabular}
-            \pause
             \vfill
-            \textbf{Closeness Centrality (Information Spread Efficiency)}
-            \tiny{(Calculated on the Giant Connected Component)}
+            \textbf{Closeness Centrality}
+
             \begin{tabular}{|c|c|}
                 \hline
                 Node & Closeness \\
                 \hline
-                \rowcolor{yellow!30} \textbf{88} & \textbf{0.4808} \\
+                88 & 0.4808 \\
                 3998 & 0.4060 \\
                 89805 & 0.3993 \\
                 \hline
@@ -102,24 +96,23 @@
         \end{column}
         
         \begin{column}{0.5\textwidth}
-            \textbf{Betweenness Centrality (Bridge Role)}
+            \textbf{Betweenness Centrality}
             \begin{tabular}{|c|c|}
                 \hline
                 Node & Betweenness \\
                 \hline
-                \rowcolor{yellow!30} \textbf{88} & \textbf{1.00} \\
+                88 & 1.00 \\
                 64911 & 0.96 \\
                 13808 & 0.85 \\
                 \hline
             \end{tabular}
-            \pause
             \vfill
-            \textbf{Eigenvector Centrality (Neighbor Importance)}
+            \textbf{Eigenvector Centrality}
             \begin{tabular}{|c|c|}
                 \hline
                 Node & Eigenvector \\
                 \hline
-                \rowcolor{yellow!30} \textbf{88} & \textbf{1.00} \\
+                88 & 1.00 \\
                 3998 & 0.54 \\
                 13808 & 0.53 \\
                 \hline
@@ -128,38 +121,19 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}
-    \frametitle{Centrality Analysis (2/2) - Key Findings}
-    \centering
-        \huge\textbf{Node 88}
-        \vskip1cm
-        \Large
-        Ranks \textbf{\textcolor{red}{first}} in all centrality measures
-    \pause
-    \begin{itemize}
-        \item \textbf{Highest Degree:} The most active participant in the network.
-        \item \textbf{Highest Betweenness:} The core hub for information dissemination between different communities.
-        \item \textbf{Highest Closeness:} In the most advantageous position for information spread in the core discussion area.
-        \item \textbf{Highest Eigenvector:} Connects a large number of other important nodes, with huge influence.
-    \end{itemize}
-    \vfill
-    \Large\textit{Inference: Node 88 may be an authoritative news agency, research center, or a highly influential public figure.}
-\end{frame}
-
 \subsection{Community Detection}
 \begin{frame}
-    \frametitle{Community Detection - Discovering Groups in the Network}
+    \frametitle{Community Detection}
     \begin{itemize}
-        \item \textbf{Algorithm:} Leiden Algorithm (efficient and commonly used)
-        \item \textbf{Number of Communities Detected:} 10,681
-        \pause
-        \item \textbf{Modularity of the Partition:} \textbf{0.8525}
+        \item \textbf{Algorithm:} Leiden Algorithm
+        \item \textbf{Communities:} 10,681
+        
+        \item \textbf{Modularity:} 0.8525
         \begin{itemize}
-            \item This is a very high value (typically > 0.3 is considered significant).
-            \item Indicates that the network has a \textbf{very clear and stable} community structure.
+            \item This is a very high value. Indicates that the network has a significant community structure.
         \end{itemize}
-        \pause
-        \item \textbf{Sizes of the 5 Largest Communities:}
+        
+        \item \textbf{5 Largest Communities:}
             \begin{center}
             \begin{tabular}{cc}
                 \toprule
@@ -178,41 +152,66 @@
 
 \subsection{Degree Distribution}
 \begin{frame}
-    \frametitle{Degree Distribution - Power Law and Scale-Free Networks}
+    \frametitle{Degree Distribution}
     \begin{figure}
         \includegraphics[width=0.9\textwidth]{../report/plots/degree_distribution.png}
-        \caption{Degree Distribution of the Network (log-log scale)}
+        \caption{Degree Distribution (log-log scale)}
     \end{figure}
-    \pause
-    \begin{itemize}
-        \item On a log-log scale, the degree distribution shows an approximately \textbf{linear} trend.
-        \item This is a typical feature of a \textbf{Power Law} distribution.
-        \item \textbf{Conclusion:} The network is a "Scale-Free Network".
-        \begin{itemize}
-            \item \textbf{Characteristics:} A few nodes have a very high number of connections, while most nodes have a very low number of connections.
-            \item \textbf{Properties:} Resilient to random failures, but vulnerable to attacks targeting core nodes (like node 88).
-        \end{itemize}
-    \end{itemize}
 \end{frame}
 
-\section{Summary}
+\section{Comparison with Stochastic Model}
 \begin{frame}
-    \frametitle{Summary and Findings}
+    \frametitle{Comparison with Stochastic Model}
     \begin{itemize}
-        \item \textbf{Network Type:}
-        The network is a typical \textbf{Scale-Free} social network, large in scale but loosely structured.
-        \pause
-        \item \textbf{Network Structure:}
+        \item \textbf{Model:} Barabási-Albert (BA) model.
+        \item \textbf{Parameters:}
         \begin{itemize}
-            \item There is a core "Giant Connected Component" (GCC) and a large number of peripheral small communities.
-            \item It has a highly modular (community) structure (modularity > 0.85).
+            \item $N = 116,408$
+            \item $m=2$
         \end{itemize}
-        \pause
-        \item \textbf{Key Nodes:}
-        Centrality analysis successfully identified the core nodes in the network (like \textbf{Node 88}), which play a key role in information dissemination and network structure stability.
-        \pause
-        \item \textbf{Implications:}
-        These findings provide valuable insights into understanding information flow, influence building, and community organization in online social networks.
+    \end{itemize}
+    
+    \begin{beamercolorbox}[sep=1em]{block body}
+    \begin{tabular}{l c c}
+        \toprule
+        \textbf{Metric} & \textbf{Higgs Network} & \textbf{BA Model} \\
+        \midrule
+        Average Degree & 2.59 & 4.00 \\
+        GCC Size & 1801 & 1 \\
+        Modularity & 0.8525 & 0.5427 \\
+        \bottomrule
+    \end{tabular}
+    \end{beamercolorbox}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Comparison with Stochastic Model}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \textbf{Real Network}
+            \includegraphics[width=\textwidth]{../report/plots/degree_distribution_higgs-mention_network.edgelist.png}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \textbf{BA Model}
+            \includegraphics[width=\textwidth]{../report/plots/degree_distribution_ba_model.edgelist.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Comparison Conclusions}
+    \begin{itemize}
+        \item \textbf{Success of the BA Model:}
+        \begin{itemize}
+            \item Reproduces the scale-free nature. Both show a power-law degree distribution.
+            \item Confirms that preferential attachment is important to the evolution of this social network.
+        \end{itemize}
+        
+        \item \textbf{Limitations of the BA Model:}
+        \begin{itemize}
+            \item Failed to generate a core community.
+            \item Failed to create a strong community structure.
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -220,9 +219,7 @@
 \begin{frame}
     \centering
     \vfill
-    \Huge Thank you for your attention!
-    \vfill
-    \Large Q \& A
+    \Huge Thank you!
     \vfill
 \end{frame}
 
